@@ -2,43 +2,60 @@ const fs = require("fs");
 const path = require("path");
 
 const genFile = (fileName) => {
-  const filePath = path.join(__dirname, "src", "components", `${fileName}`);
-  console.log(filePath);
+  const filePath = path.join(
+    __dirname,
+    "../",
+    "src",
+    "components",
+    `${fileName}`
+  );
+
   if (fs.existsSync(filePath)) {
     return "File already exists!";
   }
+
+  fs.mkdirSync(path.join(__dirname, "../", "src", "components", `${fileName}`));
+
   const indexData = createIndexJs(fileName);
-  console.log(indexData);
+
   fs.writeFile(
-    path.join(__dirname, "src", "components", `${fileName}`, "index.js"),
+    path.join(__dirname, "../", "src", "components", `${fileName}`, "index.js"),
     indexData,
+    "utf8",
     (err) => {
       if (err) {
         console.log(err);
         return JSON.stringify(err);
       }
+
       const compJsData = createCompJs(fileName);
-      console.log(compJsData);
       const compCssData = ``;
-      fs.writeFileSync(
+      fs.writeFile(
         path.join(
           __dirname,
+          "../",
           "src",
           "components",
           `${fileName}`,
           `${fileName}.js`
         ),
-        compJsData
+        compJsData,
+        "utf8",
+        (err) => console.log(err)
       );
-      fs.writeFileSync(
+
+      fs.writeFile(
         path.join(
           __dirname,
+          "../",
           "src",
           "components",
           `${fileName}`,
           `${fileName}.css`
         ),
-        compCssData
+        compCssData,
+        "utf8",
+        (err) => console.log(err)
       );
     }
   );

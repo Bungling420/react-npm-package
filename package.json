@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "A react component file generator",
   "main": "index.js",
+  "preferGlobal": true,
+  "bin": "./index.js",
   "scripts": {
     "start": "node index.js generate App"
   },
