@@ -2,24 +2,18 @@ const fs = require("fs");
 const path = require("path");
 
 const genFile = (fileName) => {
-  const filePath = path.join(
-    __dirname,
-    "../",
-    "src",
-    "components",
-    `${fileName}`
-  );
+  const filePath = path.join(process.cwd(), "src", "components", `${fileName}`);
 
   if (fs.existsSync(filePath)) {
     return "File already exists!";
   }
 
-  fs.mkdirSync(path.join(__dirname, "../", "src", "components", `${fileName}`));
+  fs.mkdirSync(path.join(process.cwd(), "src", "components", `${fileName}`));
 
   const indexData = createIndexJs(fileName);
 
   fs.writeFile(
-    path.join(__dirname, "../", "src", "components", `${fileName}`, "index.js"),
+    path.join(process.cwd(), "src", "components", `${fileName}`, "index.js"),
     indexData,
     "utf8",
     (err) => {
@@ -32,8 +26,7 @@ const genFile = (fileName) => {
       const compCssData = ``;
       fs.writeFile(
         path.join(
-          __dirname,
-          "../",
+          process.cwd(),
           "src",
           "components",
           `${fileName}`,
@@ -41,13 +34,12 @@ const genFile = (fileName) => {
         ),
         compJsData,
         "utf8",
-        (err) => console.log(err)
+        (err) => err && console.log(err)
       );
 
       fs.writeFile(
         path.join(
-          __dirname,
-          "../",
+          process.cwd(),
           "src",
           "components",
           `${fileName}`,
@@ -55,7 +47,7 @@ const genFile = (fileName) => {
         ),
         compCssData,
         "utf8",
-        (err) => console.log(err)
+        (err) => err && console.log(err)
       );
     }
   );

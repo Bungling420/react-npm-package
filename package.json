@@ -1,5 +1,5 @@
 {
-  "name": "react-comp-gen",
+  "name": "react-comp",
   "version": "1.0.0",
   "description": "A react component file generator",
   "main": "index.js",

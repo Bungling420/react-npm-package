@@ -1,12 +1,10 @@
 #!/usr/bin/env node
 
 const { Command } = require("commander");
-const { genFile } = require("./functions/genFile");
+const { createFileCommand } = require("./commands");
 
 const program = new Command();
 
-program.command("generate <fileName>").action((fileName) => {
-  genFile(fileName);
-});
+program.version("0.1.0").addCommand(createFileCommand());
 
 program.parse(process.argv);
