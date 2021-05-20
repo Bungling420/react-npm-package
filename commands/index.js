@@ -1,5 +1,5 @@
-const createFileCommand = require("./createFileCommand");
+const createFolderCommand = require("./createFolderCommand");
 
 module.exports = {
-  createFileCommand,
+  createFolderCommand,
 };

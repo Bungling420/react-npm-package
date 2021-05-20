@@ -6,7 +6,8 @@
   "preferGlobal": true,
   "bin": "./index.js",
   "scripts": {
-    "start": "node index.js create App"
+    "start": "node index.js create App",
+    "test": "jest"
   },
   "author": "Shay Mesh",
   "license": "ISC",

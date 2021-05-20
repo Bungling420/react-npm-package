@@ -1,7 +1,7 @@
 const { Command } = require("commander");
-const { createFile } = require("../functions/createFile");
+const { createFolder } = require("../functions/createFolder");
 
-const createFileCommand = () => {
+const createFolderCommand = () => {
   const gen = new Command("create");
   gen
     .arguments("<fileName>")
@@ -9,9 +9,9 @@ const createFileCommand = () => {
       "Creates a folder in /src/components with the filename and creates default component files.",
       { fileName: "Name of the component, use camelCase for convention." }
     )
-    .action(createFile);
+    .action(createFolder);
 
   return gen;
 };
 
-module.exports = createFileCommand;
+module.exports = createFolderCommand;

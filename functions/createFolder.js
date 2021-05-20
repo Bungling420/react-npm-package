@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const { logger } = require("../util");
 
-const createFile = (fileName) => {
+const createFolder = (fileName) => {
   const filePath = path.join(process.cwd(), "src", "components", `${fileName}`);
   const srcFilePath = path.join(process.cwd(), "src");
   const componentsFilePath = path.join(process.cwd(), "src", "components");
@@ -24,59 +24,66 @@ const createFile = (fileName) => {
   logger.info(`Creating ${fileName} folder in components...`);
   fs.mkdirSync(filePath);
 
-  const indexData = createIndexJs(fileName);
+  createIndexJsFile(fileName);
+  createCompJsFile(fileName);
+  createCompCssFile(fileName);
+};
+
+const createIndexJsFile = (fileName) => {
+  const indexData = createIndexJsContent(fileName);
 
   logger.info(`Creating index.js file in ${fileName}...`);
   fs.writeFile(
     path.join(process.cwd(), "src", "components", `${fileName}`, "index.js"),
     indexData,
     "utf8",
-    (err) => {
-      if (err) {
-        return logger.error(err);
-      }
-
-      const compJsData = createCompJs(fileName);
-      const compCssData = ``;
-
-      logger.info(`Creating ${fileName}.js file in ${fileName}...`);
-      fs.writeFile(
-        path.join(
-          process.cwd(),
-          "src",
-          "components",
-          `${fileName}`,
-          `${fileName}.js`
-        ),
-        compJsData,
-        "utf8",
-        (err) => err && console.log(err)
-      );
-
-      logger.info(`Creating ${fileName}.css file in ${fileName}...`);
-      fs.writeFile(
-        path.join(
-          process.cwd(),
-          "src",
-          "components",
-          `${fileName}`,
-          `${fileName}.css`
-        ),
-        compCssData,
-        "utf8",
-        (err) => err && console.log(err)
-      );
-    }
+    (err) => err && logger.error(err)
   );
 };
 
-const createIndexJs = (fileName) => {
+const createCompJsFile = (fileName) => {
+  const compJsData = createCompJsContent(fileName);
+
+  logger.info(`Creating ${fileName}.js file in ${fileName}...`);
+  fs.writeFile(
+    path.join(
+      process.cwd(),
+      "src",
+      "components",
+      `${fileName}`,
+      `${fileName}.js`
+    ),
+    compJsData,
+    "utf8",
+    (err) => err && logger.error(err)
+  );
+};
+
+const createCompCssFile = (fileName) => {
+  const compCssData = ``;
+
+  logger.info(`Creating ${fileName}.css file in ${fileName}...`);
+  fs.writeFile(
+    path.join(
+      process.cwd(),
+      "src",
+      "components",
+      `${fileName}`,
+      `${fileName}.css`
+    ),
+    compCssData,
+    "utf8",
+    (err) => err && logger.error(err)
+  );
+};
+
+const createIndexJsContent = (fileName) => {
   return `import ${fileName} from "./${fileName}";
 export default ${fileName};
 `;
 };
 
-const createCompJs = (fileName) => {
+const createCompJsContent = (fileName) => {
   return `import React from "react";
 
 //components
@@ -93,5 +100,7 @@ export default ${fileName};
 };
 
 module.exports = {
-  createFile,
+  createFolder,
+  createIndexJsContent,
+  createCompJsContent,
 };
