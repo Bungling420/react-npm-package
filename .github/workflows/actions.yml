@@ -5,7 +5,7 @@ on:
     branches: [master]
 
 jobs:
-  Test push actions:
+  Test-push-action:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
