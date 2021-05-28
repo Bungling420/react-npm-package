@@ -8,7 +8,9 @@ const createFolder = (fileName) => {
   const componentsFilePath = path.join(process.cwd(), "src", "components");
 
   if (fs.existsSync(filePath)) {
-    return logger.error("File already exists!");
+    const message = "File already exists!";
+    logger.error("File already exists!");
+    throw new Error(message);
   }
 
   if (!fs.existsSync(srcFilePath)) {
@@ -33,11 +35,10 @@ const createIndexJsFile = (fileName) => {
   const indexData = createIndexJsContent(fileName);
 
   logger.info(`Creating index.js file in ${fileName}...`);
-  fs.writeFile(
+  fs.writeFileSync(
     path.join(process.cwd(), "src", "components", `${fileName}`, "index.js"),
     indexData,
-    "utf8",
-    (err) => err && logger.error(err)
+    "utf8"
   );
 };
 
@@ -45,7 +46,7 @@ const createCompJsFile = (fileName) => {
   const compJsData = createCompJsContent(fileName);
 
   logger.info(`Creating ${fileName}.js file in ${fileName}...`);
-  fs.writeFile(
+  fs.writeFileSync(
     path.join(
       process.cwd(),
       "src",
@@ -54,8 +55,7 @@ const createCompJsFile = (fileName) => {
       `${fileName}.js`
     ),
     compJsData,
-    "utf8",
-    (err) => err && logger.error(err)
+    "utf8"
   );
 };
 
@@ -63,7 +63,7 @@ const createCompCssFile = (fileName) => {
   const compCssData = ``;
 
   logger.info(`Creating ${fileName}.css file in ${fileName}...`);
-  fs.writeFile(
+  fs.writeFileSync(
     path.join(
       process.cwd(),
       "src",
@@ -72,8 +72,7 @@ const createCompCssFile = (fileName) => {
       `${fileName}.css`
     ),
     compCssData,
-    "utf8",
-    (err) => err && logger.error(err)
+    "utf8"
   );
 };
 
@@ -101,6 +100,9 @@ export default ${fileName};
 
 module.exports = {
   createFolder,
+  createIndexJsFile,
+  createCompJsFile,
+  createCompCssFile,
   createIndexJsContent,
   createCompJsContent,
 };
