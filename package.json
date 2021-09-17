@@ -1,7 +1,7 @@
 {
-  "name": "react-comp",
+  "name": "rcfsg",
   "version": "1.0.1",
-  "description": "A react component file generator",
+  "description": "A react component file stucture generator,",
   "main": "index.js",
   "preferGlobal": true,
   "bin": "./index.js",

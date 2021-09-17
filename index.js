@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
 const { Command } = require("commander");
-const { createFolderCommand } = require("./commands");
+const { createCommand } = require("./commands");
 
-const program = new Command();
+const rcfsg = new Command();
 
-program.version("0.1.0").addCommand(createFolderCommand());
+rcfsg.version("0.1.0").addCommand(createCommand());
 
-program.parse(process.argv);
+rcfsg.parse(process.argv);
