@@ -18,10 +18,8 @@
   "devDependencies": {
     "jest": "^27.2.0"
   },
-  {
   "repository": {
     "type": "git",
     "url": "https://github.com/ShayMeshGit/react-comp-file"
   }
-}
 }
