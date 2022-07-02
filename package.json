@@ -3,7 +3,6 @@
   "version": "1.0.1",
   "description": "A react component file stucture generator,",
   "main": "index.js",
-  "preferGlobal": true,
   "bin": "./index.js",
   "scripts": {
     "start": "node index.js create App",
@@ -21,5 +20,11 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/ShayMeshGit/react-comp-file"
-  }
+  },
+  "keywords": [
+    "cli",
+    "files",
+    "generate",
+    "auto"
+  ]
 }
