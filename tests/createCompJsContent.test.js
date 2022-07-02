@@ -1,4 +1,4 @@
-const { createCompJsContent } = require("../functions/createFolder");
+const { createCompJsContent } = require("../functions/createCompJsFile");
 
 describe("createCompJsContent", () => {
   test("Should return the content for Test.js file with the name Test", () => {

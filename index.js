@@ -3,8 +3,8 @@
 const { Command } = require("commander");
 const { createCommand } = require("./commands");
 
-const rcfsg = new Command();
+const create = new Command();
 
-rcfsg.version("0.1.0").addCommand(createCommand());
+create.version("0.1.0").addCommand(createCommand());
 
-rcfsg.parse(process.argv);
+create.parse(process.argv);

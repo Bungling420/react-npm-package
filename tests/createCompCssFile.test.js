@@ -1,13 +1,16 @@
-const { createCompCssFile } = require("../functions/createFolder");
+const { createCompCssFile } = require("../functions/createCompCssFile");
 const fs = require("fs");
 const path = require("path");
 
+jest.mock("fs");
+
 describe("createCompCssFile", () => {
-  const folderPath = path.join(process.cwd(), "src", "components", "Test");
+  const MOCK_FILE_INFO = {
+    "/src/components/Test/": "",
+  };
 
   test("Should create Test.css file in Test folder", () => {
-    fs.mkdirSync(folderPath, { recursive: true });
-
+    require("fs").__setMockFiles(MOCK_FILE_INFO);
     const filePath = path.join(
       process.cwd(),
       "src",

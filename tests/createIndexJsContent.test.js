@@ -1,4 +1,4 @@
-const { createIndexJsContent } = require("../functions/createFolder");
+const { createIndexJsContent } = require("../functions/createIndexJsFile");
 
 describe("createIndexJsContent", () => {
   test("Should return the content for index.js file with the name Test", () => {
