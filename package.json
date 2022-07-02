@@ -1,6 +1,6 @@
 {
   "name": "react-comp-file",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "A react component file stucture generator,",
   "main": "index.js",
   "bin": "./index.js",
