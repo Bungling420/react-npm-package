@@ -1,8 +1,8 @@
-const fs = require("fs");
-const { logger } = require("../util");
-const path = require("path");
+import * as fs from "fs";
+import * as path from "path";
+import { logger } from "../util";
 
-const createCompCssFile = (fileName) => {
+const createCompCssFile = (fileName: string) => {
   const compCssData = ``;
 
   logger.info(`Creating ${fileName}.css file in ${fileName}...`);
@@ -19,6 +19,4 @@ const createCompCssFile = (fileName) => {
   );
 };
 
-module.exports = {
-  createCompCssFile,
-};
+export { createCompCssFile };

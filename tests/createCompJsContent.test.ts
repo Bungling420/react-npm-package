@@ -1,4 +1,6 @@
-const { createCompJsContent } = require("../functions/createCompJsFile");
+jest.mock("../util/logger");
+
+import { createCompJsContent } from "../functions/createCompJsFile";
 
 describe("createCompJsContent", () => {
   test("Should return the content for Test.js file with the name Test", () => {

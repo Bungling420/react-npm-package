@@ -1,8 +1,8 @@
-const fs = require("fs");
-const { logger } = require("../util");
-const path = require("path");
+import * as fs from "fs";
+import * as path from "path";
+import { logger } from "../util";
 
-const createCompJsFile = (fileName) => {
+const createCompJsFile = (fileName: string) => {
   const compJsData = createCompJsContent(fileName);
 
   logger.info(`Creating ${fileName}.js file in ${fileName}...`);
@@ -19,7 +19,7 @@ const createCompJsFile = (fileName) => {
   );
 };
 
-const createCompJsContent = (fileName) => {
+const createCompJsContent = (fileName: string) => {
   return `import React from "react";
 
 //components
@@ -35,7 +35,4 @@ export default ${fileName};
 `;
 };
 
-module.exports = {
-  createCompJsFile,
-  createCompJsContent,
-};
+export { createCompJsFile, createCompJsContent };

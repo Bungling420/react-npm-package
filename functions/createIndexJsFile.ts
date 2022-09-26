@@ -1,8 +1,8 @@
-const fs = require("fs");
-const { logger } = require("../util");
-const path = require("path");
+import * as fs from "fs";
+import * as path from "path";
+import { logger } from "../util";
 
-const createIndexJsFile = (fileName) => {
+const createIndexJsFile = (fileName: string) => {
   const indexData = createIndexJsContent(fileName);
 
   logger.info(`Creating index.js file in ${fileName}...`);
@@ -13,13 +13,10 @@ const createIndexJsFile = (fileName) => {
   );
 };
 
-const createIndexJsContent = (fileName) => {
+const createIndexJsContent = (fileName: string) => {
   return `import ${fileName} from "./${fileName}";
 export default ${fileName};
 `;
 };
 
-module.exports = {
-  createIndexJsFile,
-  createIndexJsContent,
-};
+export { createIndexJsFile, createIndexJsContent };

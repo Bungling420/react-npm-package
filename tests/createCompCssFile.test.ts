@@ -1,8 +1,9 @@
-const { createCompCssFile } = require("../functions/createCompCssFile");
-const fs = require("fs");
-const path = require("path");
-
+jest.mock("../util/logger");
 jest.mock("fs");
+
+import { createCompCssFile } from "../functions/createCompCssFile";
+import * as fs from "fs";
+import * as path from "path";
 
 describe("createCompCssFile", () => {
   const MOCK_FILE_INFO = {

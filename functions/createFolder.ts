@@ -1,11 +1,11 @@
-const fs = require("fs");
-const path = require("path");
-const { logger } = require("../util");
-const { createIndexJsFile } = require("./createIndexJsFile");
-const { createCompJsFile } = require("./createCompJsFile");
-const { createCompCssFile } = require("./createCompCssFile");
+import * as fs from "fs";
+import * as path from "path";
+import { logger } from "../util";
+import { createIndexJsFile } from "./createIndexJsFile";
+import { createCompJsFile } from "./createCompJsFile";
+import { createCompCssFile } from "./createCompCssFile";
 
-const createFolder = (fileName) => {
+const createFolder = (fileName: string) => {
   const filePath = path.join(process.cwd(), "src", "components", `${fileName}`);
   const srcFilePath = path.join(process.cwd(), "src");
   const componentsFilePath = path.join(process.cwd(), "src", "components");
@@ -34,6 +34,4 @@ const createFolder = (fileName) => {
   createCompCssFile(fileName);
 };
 
-module.exports = {
-  createFolder,
-};
+export { createFolder };

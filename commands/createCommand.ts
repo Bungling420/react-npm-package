@@ -1,7 +1,7 @@
-const { Command } = require("commander");
-const { createFolder } = require("../functions/createFolder");
+import { Command } from "commander";
+import { createFolder } from "../functions/createFolder";
 
-const createCommand = () => {
+export const createCommand = () => {
   const create = new Command("create");
   create
     .arguments("<fileName>")
@@ -13,5 +13,3 @@ const createCommand = () => {
 
   return create;
 };
-
-module.exports = createCommand;
