@@ -1,3 +1,3 @@
-import createCommand from "./createCommand";
+import { createCommand } from "./createCommand";
 
 export { createCommand };

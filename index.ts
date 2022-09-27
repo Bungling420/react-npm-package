@@ -5,6 +5,6 @@ import { createCommand } from "./commands";
 
 const program = new Command();
 
-program.version("0.1.0").addCommand(createCommand());
+program.version("2.0.0").addCommand(createCommand());
 
 program.parse(process.argv);

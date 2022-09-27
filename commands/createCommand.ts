@@ -4,10 +4,12 @@ import { createFolder } from "../functions/createFolder";
 export const createCommand = () => {
   const create = new Command("create");
   create
-    .arguments("<fileName>")
+    .argument(
+      "<fileName>",
+      "Name of the component, use camelCase for convention."
+    )
     .description(
-      "Creates a folder in /src/components with the filename and creates default component files.",
-      { fileName: "Name of the component, use camelCase for convention." }
+      "Creates a folder in /src/components with the filename and creates default component files."
     )
     .action(createFolder);
 
