@@ -2,12 +2,23 @@ import * as fs from "fs";
 import * as path from "path";
 import { logger } from "../util";
 
-const createCompCssFile = (fileName: string, isModule: boolean) => {
+const createCompCssFile = (
+  fileName: string,
+  isModule: boolean,
+  isScss: boolean
+) => {
   const compCssData = ``;
+  let suffix = ".css";
 
-  const suffix = isModule ? ".module.css" : ".css";
+  if (isModule) {
+    suffix = ".module.css";
+  }
 
-  logger.info(`Creating ${fileName}.css file in ${fileName}...`);
+  if (!isModule && isScss) {
+    suffix = ".scss";
+  }
+
+  logger.info(`Creating ${fileName}${suffix} file in ${fileName}...`);
   fs.writeFileSync(
     path.join(
       process.cwd(),

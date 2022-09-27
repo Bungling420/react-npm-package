@@ -7,6 +7,7 @@ import { createCompCssFile } from "./createCompCssFile";
 
 interface CreateOptions {
   module: boolean;
+  scss: boolean;
 }
 
 const createFolder = (fileName: string, options?: CreateOptions) => {
@@ -34,9 +35,10 @@ const createFolder = (fileName: string, options?: CreateOptions) => {
   fs.mkdirSync(filePath);
 
   const isModule = options && options.module ? true : false;
+  const isScss = options && options.scss ? !isModule : false;
   createIndexJsFile(fileName);
-  createCompJsFile(fileName, isModule);
-  createCompCssFile(fileName, isModule);
+  createCompJsFile(fileName, isModule, isScss);
+  createCompCssFile(fileName, isModule, isScss);
 };
 
 export { createFolder };
