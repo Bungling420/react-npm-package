@@ -1,8 +1,9 @@
-const { createCompJsFile } = require("../functions/createCompJsFile");
-const fs = require("fs");
-const path = require("path");
-
+jest.mock("../util/logger");
 jest.mock("fs");
+
+import { createCompJsFile } from "../functions/createCompJsFile";
+import * as fs from "fs";
+import * as path from "path";
 
 describe("createCompJsFile", () => {
   const MOCK_FILE_INFO = {
@@ -22,7 +23,7 @@ describe("createCompJsFile", () => {
       "Test.js"
     );
 
-    createCompJsFile("Test");
+    createCompJsFile("Test", false);
 
     const actual = fs.existsSync(filePath);
     expect(actual).toBeTruthy();

@@ -1,11 +1,16 @@
-const fs = require("fs");
-const path = require("path");
-const { logger } = require("../util");
-const { createIndexJsFile } = require("./createIndexJsFile");
-const { createCompJsFile } = require("./createCompJsFile");
-const { createCompCssFile } = require("./createCompCssFile");
+import * as fs from "fs";
+import * as path from "path";
+import { logger } from "../util";
+import { createIndexJsFile } from "./createIndexJsFile";
+import { createCompJsFile } from "./createCompJsFile";
+import { createCompCssFile } from "./createCompCssFile";
 
-const createFolder = (fileName) => {
+interface CreateOptions {
+  module: boolean;
+  scss: boolean;
+}
+
+const createFolder = (fileName: string, options?: CreateOptions) => {
   const filePath = path.join(process.cwd(), "src", "components", `${fileName}`);
   const srcFilePath = path.join(process.cwd(), "src");
   const componentsFilePath = path.join(process.cwd(), "src", "components");
@@ -29,11 +34,11 @@ const createFolder = (fileName) => {
   logger.info(`Creating ${fileName} folder in components...`);
   fs.mkdirSync(filePath);
 
+  const isModule = options && options.module ? true : false;
+  const isScss = options && options.scss ? !isModule : false;
   createIndexJsFile(fileName);
-  createCompJsFile(fileName);
-  createCompCssFile(fileName);
+  createCompJsFile(fileName, isModule, isScss);
+  createCompCssFile(fileName, isModule, isScss);
 };
 
-module.exports = {
-  createFolder,
-};
+export { createFolder };

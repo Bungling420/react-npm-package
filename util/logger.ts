@@ -1,4 +1,4 @@
-const { createLogger, format, transports } = require("winston");
+import { createLogger, format, transports } from "winston";
 const { combine, printf, colorize, timestamp } = format;
 
 const myFormat = printf(({ level, message, timestamp }) => {
@@ -10,4 +10,4 @@ const logger = createLogger({
   transports: [new transports.Console()],
 });
 
-module.exports = logger;
+export default logger;

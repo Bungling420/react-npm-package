@@ -1,8 +1,9 @@
-const { createIndexJsFile } = require("../functions/createIndexJsFile");
-const fs = require("fs");
-const path = require("path");
-
+jest.mock("../util/logger");
 jest.mock("fs");
+
+import { createIndexJsFile } from "../functions/createIndexJsFile";
+import * as fs from "fs";
+import * as path from "path";
 
 describe("createIndexJsFile", () => {
   const MOCK_FILE_INFO = {

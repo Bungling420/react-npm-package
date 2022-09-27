@@ -1,40 +1,30 @@
 "use strict";
 
-const path = require("path");
-
-const fs = jest.createMockFromModule("fs");
+const fs: any = jest.createMockFromModule("fs");
 
 // This is a custom function that our tests can use during setup to specify
 // what the files on the "mock" filesystem should look like when any of the
 // `fs` APIs are used.
-let mockFiles = Object.create(null);
+let mockFiles: object = {};
 
-function __setMockFiles(newMockFiles) {
-  mockFiles = Object.create(null);
-  for (const file in newMockFiles) {
-    const dir = path.dirname(file);
-
-    if (!mockFiles[dir]) {
-      mockFiles[dir] = [];
-    }
-    mockFiles[dir].push(path.basename(file));
-  }
+function __setMockFiles(newMockFiles: object) {
+  mockFiles = newMockFiles;
 }
-function writeFileSync(directoryPath, data) {
+function writeFileSync(directoryPath: string, data: string) {
   mockFiles[directoryPath] = data;
 }
 
-function existsSync(directoryPath) {
+function existsSync(directoryPath: string) {
   return Object.keys(mockFiles).some((dir) => dir === directoryPath);
 }
 
 // A custom version of `readdirSync` that reads from the special mocked out
 // file list set via __setMockFiles
-function readdirSync(directoryPath) {
+function readdirSync(directoryPath: string) {
   return mockFiles[directoryPath] || [];
 }
 
-function mkdirSync(directoryPath) {
+function mkdirSync(directoryPath: string) {
   mockFiles[directoryPath] = "";
 }
 

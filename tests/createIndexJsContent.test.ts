@@ -1,4 +1,6 @@
-const { createIndexJsContent } = require("../functions/createIndexJsFile");
+jest.mock("../util/logger");
+
+import { createIndexJsContent } from "../functions/createIndexJsFile";
 
 describe("createIndexJsContent", () => {
   test("Should return the content for index.js file with the name Test", () => {
