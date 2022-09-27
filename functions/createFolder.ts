@@ -5,7 +5,11 @@ import { createIndexJsFile } from "./createIndexJsFile";
 import { createCompJsFile } from "./createCompJsFile";
 import { createCompCssFile } from "./createCompCssFile";
 
-const createFolder = (fileName: string) => {
+interface CreateOptions {
+  module: boolean;
+}
+
+const createFolder = (fileName: string, options?: CreateOptions) => {
   const filePath = path.join(process.cwd(), "src", "components", `${fileName}`);
   const srcFilePath = path.join(process.cwd(), "src");
   const componentsFilePath = path.join(process.cwd(), "src", "components");
@@ -29,9 +33,10 @@ const createFolder = (fileName: string) => {
   logger.info(`Creating ${fileName} folder in components...`);
   fs.mkdirSync(filePath);
 
+  const isModule = options && options.module ? true : false;
   createIndexJsFile(fileName);
-  createCompJsFile(fileName);
-  createCompCssFile(fileName);
+  createCompJsFile(fileName, isModule);
+  createCompCssFile(fileName, isModule);
 };
 
 export { createFolder };

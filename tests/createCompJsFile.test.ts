@@ -23,7 +23,7 @@ describe("createCompJsFile", () => {
       "Test.js"
     );
 
-    createCompJsFile("Test");
+    createCompJsFile("Test", false);
 
     const actual = fs.existsSync(filePath);
     expect(actual).toBeTruthy();

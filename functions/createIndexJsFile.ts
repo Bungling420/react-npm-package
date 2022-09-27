@@ -2,6 +2,12 @@ import * as fs from "fs";
 import * as path from "path";
 import { logger } from "../util";
 
+const createIndexJsContent = (fileName: string) => {
+  return `import ${fileName} from "./${fileName}";
+export default ${fileName};
+`;
+};
+
 const createIndexJsFile = (fileName: string) => {
   const indexData = createIndexJsContent(fileName);
 
@@ -11,12 +17,6 @@ const createIndexJsFile = (fileName: string) => {
     indexData,
     "utf8"
   );
-};
-
-const createIndexJsContent = (fileName: string) => {
-  return `import ${fileName} from "./${fileName}";
-export default ${fileName};
-`;
 };
 
 export { createIndexJsFile, createIndexJsContent };

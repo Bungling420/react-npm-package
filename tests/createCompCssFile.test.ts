@@ -20,7 +20,25 @@ describe("createCompCssFile", () => {
       "Test.css"
     );
 
-    createCompCssFile("Test");
+    createCompCssFile("Test", false);
+
+    const actual = fs.existsSync(filePath);
+    expect(actual).toBeTruthy();
+
+    fs.rmdirSync(path.join(process.cwd(), "src"), { recursive: true });
+  });
+
+  test("Should create Test.module.css file in Test folder", () => {
+    require("fs").__setMockFiles(MOCK_FILE_INFO);
+    const filePath = path.join(
+      process.cwd(),
+      "src",
+      "components",
+      `Test`,
+      "Test.module.css"
+    );
+
+    createCompCssFile("Test", true);
 
     const actual = fs.existsSync(filePath);
     expect(actual).toBeTruthy();
