@@ -1,11 +1,13 @@
 {
   "name": "react-comp-file",
-  "version": "1.0.0",
+  "version": "2.1.0",
   "description": "A react component file stucture generator,",
   "main": "index.js",
-  "bin": "./index.js",
+  "bin": {
+    "gen-files": "./index.ts"
+  },
   "scripts": {
-    "start": "node index.js create App",
+    "start": "ts-node index.ts create App",
     "test": "jest"
   },
   "author": "Shay Mesh",
